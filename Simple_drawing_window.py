@@ -19,7 +19,25 @@ class Simple_drawing_window(QWidget):
 
         self.button = QPushButton(self)
         self.button.setText("Clear")
-        self.button.move(140, 280)
+        self.button.move(160, 260)
         self.button.clicked.connect(self.clear_points)
+
+    def clear_points(self):
+        self.points.clear()
+
+    def mouseMoveEvent(self, event):
+        self.points.append(event.pos())
+
+
+def main():
+    app = QApplication(sys.argv)
+
+    w = Simple_drawing_window()
+    w.show()
+
+    return app.exec_()
+
+if __name__ == "__main__":
+    sys.exit(main())
 
     
